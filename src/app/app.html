@@ -1,0 +1,413 @@
+<!-- Custom Cursor -->
+<div class="cursor cursor-dot">
+  <strong>୨୧</strong>
+</div>
+<div class="cursor cursor-ring"></div>
+
+
+<!-- Mobile Header -->
+<div class="mobile-header">
+  <span class="brand">Alyanna Cyrelle Kumi Briones</span>
+  <button class="menu-toggle" (click)="toggleSidebar()">
+    <i class="bi bi-list"></i>
+  </button>
+</div>
+
+<!-- Overlay for mobile sidebar -->
+<div *ngIf="sidebarOpen" class="sidebar-overlay" (click)="closeSidebar()"
+  style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;backdrop-filter:blur(3px)">
+</div>
+
+<div class="layout">
+  <!-- ====== SIDEBAR ====== -->
+  <aside class="sidebar" [class.open]="sidebarOpen">
+    <div class="profile-img">
+      <img src="profile_photo.jpg" alt="Alyanna Cyrelle Kumi Briones" />
+    </div>
+
+    <h1 class="sitename">Alyanna Cyrelle<br>Kumi Briones</h1>
+
+    <div class="social-links">
+      <a href="https://www.facebook.com/kumi.briones.21/" target="_blank" aria-label="Facebook">
+        <i class="bi bi-facebook"></i>
+      </a>
+      <a href="https://www.instagram.com/qmioneee/" target="_blank" aria-label="Instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="https://github.com/kumibriones2" target="_blank" aria-label="GitHub">
+        <i class="bi bi-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/alyanna-cyrelle-kumi-briones-50a221329/" target="_blank" aria-label="LinkedIn">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="mailto:alyannacyrellekumibriones@gmail.com" aria-label="Email">
+        <i class="bi bi-envelope"></i>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <ul>
+        <li>
+          <a [class.active]="activeNav === 'hero'" (click)="scrollTo('hero')" id="nav-home">
+            <i class="bi bi-house"></i> Home
+          </a>
+        </li>
+        <li>
+          <a [class.active]="activeNav === 'about'" (click)="scrollTo('about')" id="nav-about">
+            <i class="bi bi-person"></i> About
+          </a>
+        </li>
+        <li>
+          <a [class.active]="activeNav === 'portfolio'" (click)="scrollTo('portfolio')" id="nav-projects">
+            <i class="bi bi-images"></i> Projects
+          </a>
+        </li>
+        <li>
+          <a [class.active]="activeNav === 'contact'" (click)="scrollTo('contact')" id="nav-contact">
+            <i class="bi bi-envelope"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ====== MAIN CONTENT ====== -->
+  <main class="main-content">
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="hero" class="hero-section">
+      <img class="hero-bg" src="hero_bg.gif" alt="Hero Background" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Alyanna Cyrelle Kumi Briones</h1>
+        <div class="hero-typed-wrapper">
+          I'm <span class="typed-text"></span><span class="typed-cursor">|</span>
+        </div>
+        <a href="Alyanna_Briones_Resume.pdf"
+           download="Alyanna_Briones_Resume.pdf"
+           class="btn-outline-hero"
+           id="download-resume">
+          <i class="bi bi-download"></i> Download Resume
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section id="about" class="about-section">
+      <span class="about-intro-label">A bit about me</span>
+
+      <div class="section-heading">
+        <h2>Who Am I?</h2>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="photo-grid">
+        <div class="grid-item placeholder"
+             *ngFor="let item of gridItems; let i = index"
+             (click)="onGridItemClick(item)"
+             [id]="'grid-item-' + i">
+          <span style="font-size:2.5rem;">{{ item.emoji }}</span>
+          <span style="font-size:0.7rem;color:var(--color-text-muted);position:absolute;bottom:8px;left:0;right:0;text-align:center;">{{ item.label }}</span>
+        </div>
+      </div>
+
+      <h2 class="about-name">Hi, I'm <span>Kumi!</span></h2>
+
+      <p class="about-intro-text">
+        A creative soul with a passion for turning ideas into reality.
+        Whether it's designing, coding, or crafting something unique, I love bringing visions to life.
+      </p>
+
+      <!-- ======= SERVICES ======= -->
+      <section class="services-section">
+        <div class="section-heading">
+          <h2>What I Do?</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-icon"><i class="fas fa-search"></i></span>
+            <h6><strong>K</strong>eyword Optimization</h6>
+            <p>Enhancing website SEO by strategically using relevant keywords for better search rankings.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i class="fas fa-pencil-ruler"></i></span>
+            <h6><strong>U</strong>I/UX Design</h6>
+            <p>Creating visually appealing, user-friendly interfaces that improve navigation and engagement.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i class="fas fa-mobile-alt"></i></span>
+            <h6><strong>M</strong>obile-Responsive Design</h6>
+            <p>Ensuring websites adapt seamlessly to all screen sizes for optimal usability.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i class="fas fa-code"></i></span>
+            <h6><strong>I</strong>nteractive Web Development</h6>
+            <p>Building dynamic, engaging web experiences with animations and real-time interactions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= TIMELINE ======= -->
+      <section class="timeline-section">
+        <div class="section-heading">
+          <h2>How I Found My Passion for IT</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item" *ngFor="let item of timeline; let i = index">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-year">{{ item.year }}</div>
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= SKILLS ======= -->
+      <section class="skills-section">
+        <div class="section-heading">
+          <h2>Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Front-End -->
+          <div class="skills-card front-end">
+            <h3><i class="fas fa-code"></i> Front-End Development</h3>
+            <ul>
+              <li><i class="fab fa-html5"></i> HTML</li>
+              <li><i class="fab fa-css3-alt"></i> CSS</li>
+              <li><i class="fab fa-js"></i> JavaScript</li>
+              <li><i class="fab fa-angular"></i> Angular</li>
+              <li><i class="fab fa-vuejs"></i> Vue.js</li>
+            </ul>
+          </div>
+          <!-- Back-End -->
+          <div class="skills-card back-end">
+            <h3><i class="fas fa-server"></i> Back-End Development</h3>
+            <ul>
+              <li><i class="fab fa-php"></i> PHP</li>
+              <li><i class="fab fa-node-js"></i> Node.js</li>
+              <li><i class="fab fa-python"></i> Python</li>
+              <li><i class="fab fa-java"></i> Java</li>
+            </ul>
+          </div>
+          <!-- Cloud & DB -->
+          <div class="skills-card cloud-db">
+            <h3><i class="fas fa-cloud"></i> Cloud &amp; DB</h3>
+            <ul>
+              <li><i class="fas fa-server"></i> MySQL</li>
+              <li><i class="fas fa-database"></i> MongoDB</li>
+              <li><i class="fas fa-fire"></i> Firebase</li>
+              <li><i class="fab fa-aws"></i> AWS</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="skills-row-2">
+          <!-- Multimedia -->
+          <div class="skills-card multimedia">
+            <h3><i class="fas fa-paint-brush"></i> Multimedia Design</h3>
+            <ul>
+              <li><i class="fas fa-palette"></i> Canva</li>
+              <li><i class="fas fa-image"></i> Photoshop</li>
+              <li><i class="fab fa-figma"></i> Figma</li>
+              <li><i class="fas fa-layer-group"></i> UI/UX Design</li>
+              <li><i class="fas fa-pen-nib"></i> Branding &amp; Logo Design</li>
+              <li><i class="fas fa-video"></i> Basic Video Editing</li>
+            </ul>
+          </div>
+          <!-- Soft Skills -->
+          <div class="skills-card soft-skills">
+            <h3><i class="fas fa-user-check"></i> Soft Skills</h3>
+            <ul>
+              <li><i class="fas fa-users"></i> Teamwork &amp; Collaboration</li>
+              <li><i class="fas fa-clock"></i> Time Management</li>
+              <li><i class="fas fa-search"></i> Problem-Solving</li>
+              <li><i class="fas fa-lightbulb"></i> Creativity &amp; Attention to Detail</li>
+              <li><i class="fas fa-sync-alt"></i> Adaptability &amp; Flexibility</li>
+              <li><i class="fas fa-graduation-cap"></i> Continuous Learning</li>
+              <li><i class="fas fa-smile"></i> Emotional Intelligence</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <span class="decorative-text">────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────</span>
+    </section>
+
+    <!-- ============ PROJECTS SECTION ============ -->
+    <section id="portfolio" class="projects-section">
+      <div class="projects-header">
+        <h2><strong>My Projects</strong></h2>
+        <div class="filter-tabs">
+          <button class="filter-tab" [class.active]="activeFilter === '*'"
+            (click)="setFilter('*')" id="filter-all">All Projects</button>
+          <button class="filter-tab" [class.active]="activeFilter === 'web-dev'"
+            (click)="setFilter('web-dev')" id="filter-webdev">Web Development</button>
+          <button class="filter-tab" [class.active]="activeFilter === 'cms'"
+            (click)="setFilter('cms')" id="filter-cms">CMS-Based</button>
+          <button class="filter-tab" [class.active]="activeFilter === 'ghl'"
+            (click)="setFilter('ghl')" id="filter-ghl">GHL / CMS</button>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-item" *ngFor="let project of filteredProjects; let i = index" [id]="'project-' + i">
+          <img [src]="project.img" [alt]="project.title" loading="lazy">
+          <div class="project-overlay">
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.desc }}</p>
+            <div class="project-btns" *ngIf="project.link">
+              <a class="project-btn" [href]="project.link" target="_blank" [attr.aria-label]="'View ' + project.title">
+                <i class="fa fa-link"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <span class="decorative-text" style="margin-top:50px;">────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────</span>
+    </section>
+
+    <!-- ============ CERTIFICATES SECTION ============ -->
+    <section id="certificate" class="certs-section">
+      <div class="section-heading">
+        <h2>Certificates</h2>
+      </div>
+
+      <div class="swiper cert-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide cert-slide" *ngFor="let cert of certificates; let i = index" [id]="'cert-' + i">
+            <a [href]="cert.link" target="_blank">
+              <img [src]="cert.img" [alt]="cert.alt" loading="lazy">
+              <div class="cert-overlay"><i class="bi bi-eye"></i> View Certificate</div>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-pagination cert-pagination"></div>
+      </div>
+
+      <span class="decorative-text">────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────</span>
+    </section>
+
+    <!-- ============ TESTIMONIALS SECTION ============ -->
+    <section id="testimonial" class="testimonials-section">
+      <div class="section-heading">
+        <h2>Testimonials</h2>
+        <p>Real experiences shared by those I've worked with</p>
+      </div>
+
+      <div class="swiper testimonials-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let t of testimonials; let i = index" [id]="'testimonial-' + i">
+            <div class="testimonial-item">
+              <p>
+                <i class="bi bi-quote quote-icon"></i>
+                {{ t.quote }}
+              </p>
+              <div class="testimonial-footer">
+                <img [src]="t.img" [alt]="t.name" class="testimonial-img"
+                     onerror="this.src='profile_photo.jpg'">
+                <div class="testimonial-info">
+                  <h3>{{ t.name }}</h3>
+                  <h4>{{ t.role }}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination testimonials-pagination"></div>
+      </div>
+
+      <span class="decorative-text" style="margin-top:40px;">────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────────୨ৎ────</span>
+    </section>
+
+    <!-- ============ CONTACT SECTION ============ -->
+    <section id="contact" class="contact-section">
+      <div class="section-heading">
+        <h2>Get in Touch</h2>
+      </div>
+
+      <div class="contact-info-grid">
+        <div class="contact-info-item">
+          <i class="bi bi-geo-alt"></i>
+          <p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Villa+Belen+South+Sto.+Cristo,+Angeles+City+Pampanga"
+               target="_blank">
+              Villa Belen South Sto. Cristo,<br>Angeles City, Pampanga
+            </a>
+          </p>
+        </div>
+        <div class="contact-info-item">
+          <i class="bi bi-telephone"></i>
+          <p>+63 923 923 4356</p>
+        </div>
+        <div class="contact-info-item">
+          <i class="bi bi-envelope"></i>
+          <p>
+            <a href="mailto:alyannacyrellekumibriones@gmail.com">alyannacyrellekumibriones&#64;gmail.com</a>
+          </p>
+        </div>
+      </div>
+
+      <form class="contact-form" (submit)="submitForm($event)" id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" class="form-control" id="contact-name"
+                   placeholder="First Name" [(ngModel)]="contactForm.name" name="fname" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" id="contact-email"
+                   placeholder="Your Email" [(ngModel)]="contactForm.email" name="email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="contact-subject"
+                 placeholder="Subject" [(ngModel)]="contactForm.subject" name="subject" required>
+        </div>
+
+        <div class="form-group">
+          <textarea class="form-control" id="contact-message" rows="6"
+                    placeholder="Message" [(ngModel)]="contactForm.message" name="message" required></textarea>
+        </div>
+
+        <div class="form-success" [class.show]="formSuccess">
+          ✅ Your message has been sent. Thank you!
+        </div>
+
+        <button type="submit" class="btn-send" id="send-message-btn" [disabled]="formLoading">
+          <span *ngIf="!formLoading">Send Message</span>
+          <span *ngIf="formLoading">Sending...</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <p>© <span>Copyright</span> <strong class="sitename">Alyanna Cyrelle Kumi Briones.</strong> <span>All Rights Reserved.</span></p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- About Me Popup -->
+<div class="popup-overlay" [class.active]="showPopup" (click)="closePopup()">
+  <div class="popup-card" (click)="$event.stopPropagation()" id="about-popup">
+    <button class="popup-close" (click)="closePopup()" aria-label="Close popup">&times;</button>
+    <h2>About Me</h2>
+    <img class="popup-img" src="profile_photo.jpg" alt="Alyanna Cyrelle Kumi Briones">
+    <p><strong>Full Name:</strong> Alyanna Cyrelle Kumi Briones</p>
+    <p><strong>Age:</strong> 22 years old</p>
+    <p><strong>Birthday:</strong> August 21, 2003</p>
+    <p><strong>Education:</strong> BS in IT - Web Development</p>
+    <p><strong>Hobbies:</strong> Designing, Coding, Gaming, Reading</p>
+    <p><strong>Passion:</strong> IT &amp; Creative Development</p>
+  </div>
+</div>
+
+<!-- Scroll to Top -->
+<a id="scroll-top" class="scroll-top" [class.visible]="showScrollTop" (click)="scrollToTop()" aria-label="Scroll to top">
+  <i class="bi bi-arrow-up-short"></i>
+</a>
